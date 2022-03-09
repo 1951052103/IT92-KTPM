@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7eaa8b3d-7329-4648-a8e1-15a2c8e80a0a" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\Admin\AppData\Local\JetBrains\IntelliJ IDEA Community Edition 2020.2.3\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="267vJswYbKjCOgH2uXqyFrYyHC0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7eaa8b3d-7329-4648-a8e1-15a2c8e80a0a" name="Default Changelist" comment="" />
+      <created>1646787371420</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1646787371420</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="788" y="225" key="FileChooserDialogImpl" timestamp="1646787429661">
+      <screen x="0" y="30" width="1920" height="1002" />
+    </state>
+    <state x="788" y="225" key="FileChooserDialogImpl/0.30.1920.1002@0.30.1920.1002" timestamp="1646787429661" />
+    <state x="329" y="111" key="new project wizard" timestamp="1646787434592">
+      <screen x="0" y="30" width="1920" height="1002" />
+    </state>
+    <state x="329" y="111" key="new project wizard/0.30.1920.1002@0.30.1920.1002" timestamp="1646787434592" />
+  </component>
+</project>
