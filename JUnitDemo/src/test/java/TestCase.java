@@ -1,9 +1,14 @@
 
 import junitdemo.NTTest;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.params.ParameterizedTest;
 
 import java.time.Duration;
 import java.util.InputMismatchException;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 public class TestCase {
     @BeforeAll
@@ -63,6 +68,12 @@ public class TestCase {
         });
     }
 
+    @ParameterizedTest
+    @ValueSource(ints = {4, 6, 8, 20, 144, 156})
+    public void testEvenNumbers(int n) {
+        Assertions.assertFalse(NTTest.isNt(n));
+    }
+
     @Test
     @DisplayName("Kiem tra timeout")
     public void test05() {
@@ -82,7 +93,6 @@ public class TestCase {
     @CsvFileSource(resources = "/data/datatest.csv", numLinesToSkip = 1)
     public void testNumbers(int n, boolean expected){
         boolean actual = NTTest.isNt(n);
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(expected, actual, String.format("Dang test %d", n));
     }
-
 }
