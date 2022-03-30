@@ -6,19 +6,31 @@ package com.nbl.app;
 
 import com.nbl.pojo.Category;
 import com.nbl.pojo.Question;
+import com.nbl.pojo.Choice;
 import com.nbl.services.CategoryServices;
 import com.nbl.services.QuestionServices;
+import com.nbl.utils.JdbcUtils;
+import com.nbl.utils.Utils;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -32,6 +44,26 @@ public class QuestionController implements Initializable {
     private ComboBox<Category> cbCategories;
     @FXML
     private TableView<Question> tbQuestions;
+    @FXML
+    private TextField txtKeywords;
+    @FXML
+    private TextField txtContent;
+    @FXML
+    private RadioButton rdoA;
+    @FXML
+    private RadioButton rdoB;
+    @FXML
+    private RadioButton rdoC;
+    @FXML
+    private RadioButton rdoD;
+    @FXML
+    private TextField txtA;
+    @FXML
+    private TextField txtB;
+    @FXML
+    private TextField txtC;
+    @FXML
+    private TextField txtD;
     
     
     /**
@@ -47,13 +79,16 @@ public class QuestionController implements Initializable {
         }
         
         this.loadColumns();
-        this.loadTableData();
+        this.loadTableData(null);
+        txtKeywords.textProperty().addListener((evt) -> {
+            this.loadTableData(txtKeywords.getText());
+        });
     }
     
-    private void loadTableData() { //them hang
+    private void loadTableData(String kw) { //them hang
         QuestionServices s = new QuestionServices();
         try {
-            this.tbQuestions.setItems(FXCollections.observableList(s.getQuestions(null)));
+            this.tbQuestions.setItems(FXCollections.observableList(s.getQuestions(kw)));
         } catch (SQLException ex) {
             Logger.getLogger(QuestionController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -69,5 +104,26 @@ public class QuestionController implements Initializable {
         col2.setPrefWidth(300);
         
         this.tbQuestions.getColumns().addAll(col1, col2);
+    }
+    
+    public void addHandler123(ActionEvent evt) throws SQLException {
+        Question q = new Question(UUID.randomUUID().toString(), txtContent.getText(), 
+            cbCategories.getSelectionModel().getSelectedItem().getId());
+        List<Choice> choices = new ArrayList<>();
+        
+        TextField[] t = new TextField[] {txtA, txtB, txtC, txtD};
+        RadioButton[] r = new RadioButton[] {rdoA, rdoB, rdoC, rdoD};
+        for(int i = 0; i < t.length; i++) {
+            choices.add(new Choice(UUID.randomUUID().toString(), t[i].getText(), r[i].isSelected(), q.getId()));
+        }
+        
+        QuestionServices s = new QuestionServices();
+        if (s.addQuestion(q, choices) == true) {
+            this.loadTableData(null);
+            Utils.getBox("Add question successful", Alert.AlertType.INFORMATION).show();
+        }
+        else {
+            Utils.getBox("Something wrong!", Alert.AlertType.WARNING).show();
+        }
     }
 }
