@@ -102,7 +102,7 @@ public class QuestionController implements Initializable {
         TableColumn col2 = new TableColumn("Question content");
         col2.setCellValueFactory(new PropertyValueFactory("content"));
         col2.setPrefWidth(300);
-        
+
         this.tbQuestions.getColumns().addAll(col1, col2);
     }
     
